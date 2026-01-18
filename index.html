@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UMA Barber Shop | Ranip Ahmedabad</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+html{scroll-behavior:smooth}
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:#111;
+color:#fff
+}
+
+/* HERO */
+header{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+url('https://images.unsplash.com/photo-1517832606299-7ae9b720a186');
+background-size:cover;
+background-position:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center
+}
+header h1{
+font-size:64px;
+letter-spacing:6px;
+color:#f5d28b;
+margin:0
+}
+header p{font-size:18px;margin:8px 0;color:#ddd}
+nav{position:absolute;top:20px}
+nav a{color:#f5d28b;margin:0 15px;text-decoration:none;font-weight:600}
+.btn{
+margin-top:30px;
+padding:15px 34px;
+background:#f5d28b;
+color:#111;
+border-radius:30px;
+font-weight:bold;
+text-decoration:none
+}
+
+/* SECTION */
+section{padding:90px 20px;max-width:1000px;margin:auto}
+h2{text-align:center;font-size:36px;margin-bottom:40px;color:#f5d28b}
+
+/* SERVICES */
+.services{display:flex;gap:30px;justify-content:center;flex-wrap:wrap}
+.service-box{
+border:1px solid #333;
+border-radius:16px;
+padding:30px;
+width:260px;
+text-align:center;
+background:#181818
+}
+.price{font-size:22px;font-weight:bold;color:#f5d28b}
+
+/* FORM */
+form{
+margin-top:50px;
+background:#181818;
+padding:40px;
+border-radius:20px;
+max-width:600px;
+margin:auto
+}
+input,select,button{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:8px;
+font-size:15px
+}
+button{
+background:#f5d28b;
+color:#111;
+font-weight:bold;
+cursor:pointer
+}
+.flow{text-align:center;margin-top:20px;font-size:14px;color:#ccc}
+
+/* WHY UMA */
+.why{
+background:#181818;
+padding:50px;
+border-radius:20px;
+border:1px solid #333
+}
+.why ul li{margin:15px 0;font-size:17px}
+
+/* FOOTER */
+footer{
+background:#000;
+text-align:center;
+padding:25px;
+color:#aaa
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<header id="home">
+<nav>
+<a href="#home">Home</a>
+<a href="#services">Book</a>
+<a href="#why">Why UMA</a>
+</nav>
+
+<h1>UMA</h1>
+<p>Classic Barber Shop • Ranip, Ahmedabad</p>
+<p>⏰ Open Daily • 9 AM – 9 PM</p>
+<a href="#services" class="btn">Book Appointment</a>
+</header>
+
+<!-- BOOKING -->
+<section id="services">
+<h2>Book Your Slot</h2>
+
+<div class="services">
+<div class="service-box">
+<h3>Hair Cut</h3>
+<p class="price">₹120</p>
+</div>
+<div class="service-box">
+<h3>Beard Shaving</h3>
+<p class="price">₹60</p>
+</div>
+</div>
+
+<form onsubmit="sendBooking(event)">
+<input id="name" type="text" placeholder="Your Name" required>
+<input id="phone" type="tel" placeholder="Your Mobile Number" required>
+
+<select id="service" required>
+<option value="">Select Service</option>
+<option value="Hair Cut (₹120)">Hair Cut – ₹120</option>
+<option value="Beard Shaving (₹60)">Beard Shaving – ₹60</option>
+</select>
+
+<input id="date" type="date" required>
+<input id="time" type="time" min="09:00" max="21:00" required>
+
+<button type="submit">Book Appointment</button>
+
+<div class="flow">
+Fill form → Send booking → Confirmation message ✔️
+</div>
+</form>
+</section>
+
+<!-- WHY UMA -->
+<section id="why">
+<h2>Why Choose UMA</h2>
+<div class="why">
+<ul>
+<li>✂️ Experienced barber</li>
+<li>🧼 Clean & hygienic shop</li>
+<li>⏰ Fixed slot booking</li>
+<li>💰 Affordable pricing</li>
+<li>📍 Ranip, Ahmedabad</li>
+<li>📱 Easy WhatsApp booking</li>
+</ul>
+<p>
+Thank you for choosing UMA Barber Shop.
+We look forward to serving you!
+</p>
+</div>
+</section>
+
+<footer>
+<p>UMA Barber Shop © 2026</p>
+<p>Ranip, Ahmedabad</p>
+</footer>
+
+<script>
+function sendBooking(e){
+e.preventDefault();
+
+/* 🔴 CHANGE THIS TO YOUR WHATSAPP NUMBER */
+let shopNumber = "919313398903"; // example: 91 + number
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let service = document.getElementById("service").value;
+let date = document.getElementById("date").value;
+let time = document.getElementById("time").value;
+
+/* Message YOU receive */
+let ownerMessage =
+"New Appointment Booking%0A%0A"+
+"Name: "+name+"%0A"+
+"Mobile: "+phone+"%0A"+
+"Service: "+service+"%0A"+
+"Date: "+date+"%0A"+
+"Time: "+time;
+
+/* Appreciation message CUSTOMER sees */
+let customerMessage =
+"Thank you "+name+" for booking your appointment at UMA Barber Shop.%0A"+
+"Your slot is booked for "+date+" at "+time+".%0A"+
+"We look forward to serving you!";
+
+/* WhatsApp redirect */
+let whatsappURL =
+"https://wa.me/"+shopNumber+
+"?text="+ownerMessage+"%0A%0A"+customerMessage;
+
+window.location.href = whatsappURL;
+}
+</script>
+
+</body>
+</html>
